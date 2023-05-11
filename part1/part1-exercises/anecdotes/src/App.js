@@ -38,6 +38,7 @@ const ShowMostVoted = ({ updatedVotes, anecdotes }) => {
 
     return (
       <>
+        <h2>Top voted</h2>
         <h3>{anecdotes[indexMaxVoted]}</h3>
         <p> has {topVoted} votes </p>
       </>
@@ -57,7 +58,7 @@ const App = () => {
     'The only way to go fast, is to go well.'
   ]
 
-  const updatedSelected = Math.floor(Math.random() * (anecdotes.length - 1).toFixed());
+  let updatedSelected = Math.floor(Math.random() * (anecdotes.length - 1).toFixed());
 
   const [selected, setSelected] = useState(updatedSelected)
 
@@ -81,11 +82,11 @@ const App = () => {
 
 
   const randomAnecdote = () => {
-    setSelected(0)
+    //setSelected(0)
+    updatedSelected = Math.floor(Math.random() * (anecdotes.length - 1).toFixed());
     setSelected(updatedSelected)
     console.log("second call", updatedSelected)
   }
-
 
   return (
     <div>
