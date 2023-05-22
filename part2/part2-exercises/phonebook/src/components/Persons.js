@@ -1,9 +1,9 @@
 import Name from './Name'
 
-const Persons = ({ contactsToShow }) => {
+const Persons = ({ contactsToShow, handleDelete }) => {
     return (
         <ul>
-            {contactsToShow.map(object => <Name key={object.id} person={object} />)}
+            {contactsToShow.map(object => <Name key={object.id} person={object} handleDelete={handleDelete} />)}
         </ul>
 
     )
