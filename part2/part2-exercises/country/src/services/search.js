@@ -1,5 +1,6 @@
 import axios from 'axios'
 const baseUrl = 'https://studies.cs.helsinki.fi/restcountries/api/all'
+const weatherUrl = 'https://api.weatherapi.com/v1/current.json?'
 
 const getCountryByName = (name) => {
     //const request = axios.get(`${baseUrl}${name}`);
@@ -25,12 +26,21 @@ const getCountryByName = (name) => {
         // }
 
         return result;
-
-
     }
-    );
+    )
+}
+
+const getWeather = (capital) => {
+    const request = axios.get(`${weatherUrl}key=${apiKey.key}&q=${capital}`);
+    return request.then(response => response.data);
+
+}
+
+const apiKey = {
+    key: "dbce69d6a4264852b0c190018232905"
 }
 
 export {
-    getCountryByName
+    getCountryByName,
+    getWeather
 }

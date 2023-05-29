@@ -1,7 +1,7 @@
 import Detail from './Detail'
 import List from './List'
 
-function Country({ results, showDetail }) {
+function Country({ results, showDetail, weatherTime, setWeather }) {
 
     let itens;
 
@@ -25,7 +25,7 @@ function Country({ results, showDetail }) {
         itens = <li>No matches, please specify another filter!</li>
 
     } else {
-        itens = <Detail results={itens} />
+        itens = <Detail results={itens} weatherTime={weatherTime} setWeather={setWeather} />
     }
 
 

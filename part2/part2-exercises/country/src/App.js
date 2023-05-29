@@ -1,11 +1,12 @@
 import './App.css';
 import Country from './components/Country';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { getCountryByName } from './services/search'
 
 function App() {
   const [formText, setFormText] = useState()
   const [countries, setCountries] = useState([])
+  const [weatherTime, setWeather] = useState([])
 
 
   // function handleFormSubmitSearchButton(event) {
@@ -26,6 +27,7 @@ function App() {
         setCountries(response)
       })
   }
+
 
 
   function showDetail({ item, index }) {
@@ -73,7 +75,7 @@ function App() {
       </form>
       <h2>Results</h2>
 
-      <Country results={countries} showDetail={showDetail} />
+      <Country results={countries} showDetail={showDetail} weatherTime={weatherTime} setWeather={setWeather} />
 
     </div>
   );

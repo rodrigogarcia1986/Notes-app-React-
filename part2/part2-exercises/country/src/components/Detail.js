@@ -1,5 +1,7 @@
-function Detail({ results }) {
-    console.log("Início dos itens no ciclo de Detail:", results)
+import { getWeather } from '../services/search'
+
+function Detail({ results, weatherTime, setWeather }) {
+    //console.log("Início dos itens no ciclo de Detail:", results)
     let languages;
     try {
         languages = results[0].languages;
@@ -24,9 +26,21 @@ function Detail({ results }) {
         console.log("Normalização com erro:", results)
     }
 
-    //console.log(languages[1])
 
-    //console.log("Languages:", languages)
+    // let weather = getWeather(results.capital)
+    //     .then(response => {
+    //         console.log("Response", response)
+    //         weather = response.json()
+    //         //weather = Object.values(response)
+    //         return weather
+    //     })
+
+
+
+    //console.log("WEATHER:", weather)
+    //console.log("CONDITION TEXT", weather.current)
+
+
     return (
         <>
             <h2>{results.name.common}</h2>
@@ -39,6 +53,15 @@ function Detail({ results }) {
             </ul>
             <br />
             <img src={results.flags.png} alt="Country's flag" />
+            <br />
+            <h4>Weather now!</h4>
+            {/* <li>weather: {weather.current.condition.text}</li>
+            <li><img src={weather.current.condition.icon} alt="Weather icon" /></li>
+            <li>Latitude: {weather.location.lat}</li>
+            <li>Longitude: {weather.location.lon} </li>
+            <li>Local time:{weather.location.localtime} </li>
+            <li>localtime_epoch: {weather.location.localtime_epoch}</li>
+            <li> Timezone: {weather.location.tz_id}</li> */}
 
         </>
     )
