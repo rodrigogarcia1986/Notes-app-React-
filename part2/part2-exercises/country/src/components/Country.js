@@ -1,26 +1,39 @@
 import Detail from './Detail'
 import List from './List'
 
-function Country({ results }) {
+function Country({ results, showDetail }) {
 
-    if (results.length > 10) {
-        results = <li>Too many matches, please specify another filter!</li>
+    let itens;
 
-    } else if (results.length <= 10 && results.length > 1) {
-        results = <List results={results} />
+    try {
+        itens = results.map(item => item)
+    } catch (error) {
+        //console.log("Erro no Country", error.message)
+        itens = results
+    }
 
-    } else if (results.length === 0) {
-        results = <li>No matches, please specify another filter!</li>
+    //console.log("Length no início do ciclo em country", itens.length, "\nItens no início do cciclo em country:", itens)
+
+
+    if (itens.length > 10) {
+        itens = <li>Too many matches, please specify another filter!</li>
+
+    } else if (itens.length <= 10 && results.length > 1) {
+        itens = <List results={itens} showDetail={showDetail} />
+
+    } else if (itens.length === 0) {
+        itens = <li>No matches, please specify another filter!</li>
 
     } else {
-        results = <Detail results={results} />
+        itens = <Detail results={itens} />
     }
 
 
 
     return (
         <>
-            <ul>{results}</ul>
+            <ul>{itens}</ul>
+            {/* {console.log("Chegou no fim do ciclo Country")} */}
         </>
 
     )
