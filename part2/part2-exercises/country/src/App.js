@@ -25,13 +25,18 @@ function App() {
         console.log(response)
         setCountries(response)
       })
-
   }
 
 
   return (
     <div>
-      <Country formText={formText} updateFormValue={updateFormValue} results={countries} />
+      <form>
+        <label>Find countries </label><input type="text" value={formText} onChange={updateFormValue} />
+        <br />
+      </form>
+      <h2>Results</h2>
+
+      <Country results={countries} />
 
     </div>
   );
