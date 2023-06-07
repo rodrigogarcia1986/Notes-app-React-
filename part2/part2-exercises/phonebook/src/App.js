@@ -152,6 +152,11 @@ const App = () => {
         }, 5000)
 
       })
+      .catch(error => {
+        console.log("GOT ERROR WHILE EXCLUDING THE SAME ENTRY FROM DIFFERENT BROWSER!")
+        setMessage(`${toDelete.name} has already been deleted from the server!`)
+      }
+      )
   }
 
   const contactsToShow = showAll ? persons : persons.filter(person => person.name.toLowerCase() === find.toLowerCase());
